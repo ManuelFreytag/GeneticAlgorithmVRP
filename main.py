@@ -13,6 +13,7 @@ class TSPSolution:
         return [[(sum([abs(val[i] - val[j]) for val in (x, y)])) for j in range(len(y))] for i in range(len(x))]
 
 
+
 class TSPData:
     id_values = []
     x_values = []
