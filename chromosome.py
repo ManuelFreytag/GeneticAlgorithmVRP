@@ -1,4 +1,3 @@
-import node
 import os
 import numpy as np
 import random
@@ -27,6 +26,14 @@ def distance(start,stop):
 
 
 def random_chromosome(data):
+    """
+    Generate a random solution based on a given data object (might be infeasible)
+    Args:
+        data: data object in form of a MDPVP
+
+    Returns: randomized chromosome
+
+    """
     depots = data.depots
     customers = data.customers
     nr_periods = data.nr_periods
@@ -62,6 +69,12 @@ class Chromosome:
         self.fitness = fitness
 
     def evaluate(self):
+        """
+        TODO:
+        
+        Returns:
+
+        """
         nodes = self.nodes()
         length = np.double()
         capacity = np.double()

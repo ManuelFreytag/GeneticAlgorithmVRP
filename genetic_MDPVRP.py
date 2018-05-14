@@ -1,4 +1,4 @@
-import route
+import chromosome
 import numpy as np
 
 
