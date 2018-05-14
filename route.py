@@ -1,4 +1,4 @@
-import VRPNode
+import node
 import numpy as np
 
 

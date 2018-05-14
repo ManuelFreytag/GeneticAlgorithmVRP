@@ -1,25 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="922d53f6-702e-4b1b-af61-b126a74902b5" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/GeneticAlgorithmVRP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GeneticAlgorithmVRP.iml" afterDir="false" />
+    <list default="true" id="922d53f6-702e-4b1b-af61-b126a74902b5" name="Default" comment="relocate data_files into archive">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDCPVRPSolution.py" beforeDir="false" afterPath="$PROJECT_DIR$/MDCPVRPSolution.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VRPNode.py" beforeDir="false" afterPath="$PROJECT_DIR$/VRPNode.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VRPRoute.py" beforeDir="false" afterPath="$PROJECT_DIR$/VRPRoute.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/data/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/pr05" beforeDir="false" afterPath="$PROJECT_DIR$/data/pr05.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/pr06" beforeDir="false" afterPath="$PROJECT_DIR$/data/pr06.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/pr07" beforeDir="false" afterPath="$PROJECT_DIR$/data/pr07.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/pr08" beforeDir="false" afterPath="$PROJECT_DIR$/data/pr08.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/pr09" beforeDir="false" afterPath="$PROJECT_DIR$/data/pr09.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/pr10" beforeDir="false" afterPath="$PROJECT_DIR$/data/pr10.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataParsing.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_parsing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/pr01" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/pr02" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/pr03" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/new/pr04" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDCPVRPSolution.py" beforeDir="false" afterPath="$PROJECT_DIR$/genetic_MDPVRP.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VRPNode.py" beforeDir="false" afterPath="$PROJECT_DIR$/node.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VRPRoute.py" beforeDir="false" afterPath="$PROJECT_DIR$/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_parsing.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_import.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -43,8 +30,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MDCPVRPSolution.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MDCPVRPSolution.py">
+      <file leaf-file-name="genetic_MDPVRP.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/genetic_MDPVRP.py">
           <provider selected="true" editor-type-id="text-editor">
             <state>
               <caret line="12" column="66" selection-start-line="12" selection-start-column="66" selection-end-line="12" selection-end-column="66" />
@@ -55,11 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VRPRoute.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/VRPRoute.py">
+      <file leaf-file-name="route.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/route.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -67,10 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="data_parsing.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/data_parsing.py">
+      <file leaf-file-name="data_import.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data_import.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="170">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
               <folding>
                 <element signature="e#1#26#0" expanded="true" />
               </folding>
@@ -114,8 +102,9 @@
         <option value="$PROJECT_DIR$/../ColumnGen/CuttingStock.py" />
         <option value="$PROJECT_DIR$/MDCPVRPSolution.py" />
         <option value="$PROJECT_DIR$/VRPNode.py" />
-        <option value="$PROJECT_DIR$/VRPRoute.py" />
         <option value="$PROJECT_DIR$/data_parsing.py" />
+        <option value="$PROJECT_DIR$/VRPRoute.py" />
+        <option value="$PROJECT_DIR$/Route.py" />
       </list>
     </option>
   </component>
@@ -247,7 +236,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_parsing.py" />
+      <option name="SCRIPT_NAME" value="D:\OneDrive\10_Project_Datascience\Python\GeneticAlgorithmVRP\data_import.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -388,7 +377,21 @@
       <option name="project" value="LOCAL" />
       <updated>1524919155140</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Implement data import and data object construction&#10;Also setup class construct">
+      <created>1526329820905</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1526329820905</updated>
+    </task>
+    <task id="LOCAL-00004" summary="relocate data_files into archive">
+      <created>1526330386820</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1526330386820</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -463,7 +466,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="bla" />
-    <option name="LAST_COMMIT_MESSAGE" value="bla" />
+    <MESSAGE value="Implement data import and data object construction&#10;Also setup class construct" />
+    <MESSAGE value="relocate data_files into archive" />
+    <option name="LAST_COMMIT_MESSAGE" value="relocate data_files into archive" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -471,13 +476,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../ColumnGen/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="22" lean-forward="true" selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -485,7 +483,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VRPNode.py">
+    <entry file="file://$PROJECT_DIR$/node.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
@@ -506,7 +504,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_parsing.py">
+    <entry file="file://$PROJECT_DIR$/data_import.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="19" selection-start-column="19" selection-end-column="19" />
@@ -527,7 +525,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VRPNode.py">
+    <entry file="file://$PROJECT_DIR$/node.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
@@ -548,7 +546,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_parsing.py">
+    <entry file="file://$PROJECT_DIR$/data_import.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="19" selection-start-column="19" selection-end-column="19" />
@@ -577,14 +575,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_parsing.py">
+    <entry file="file://$PROJECT_DIR$/data_import.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="19" selection-start-column="19" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VRPNode.py">
+    <entry file="file://$PROJECT_DIR$/node.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
@@ -605,14 +603,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_parsing.py">
+    <entry file="file://$PROJECT_DIR$/data_import.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="19" selection-start-column="19" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VRPNode.py">
+    <entry file="file://$PROJECT_DIR$/node.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
@@ -627,7 +625,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_parsing.py">
+    <entry file="file://$PROJECT_DIR$/data_import.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="19" selection-start-column="19" selection-end-column="19" />
@@ -641,7 +639,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VRPNode.py">
+    <entry file="file://$PROJECT_DIR$/node.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
@@ -662,14 +660,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_parsing.py">
+    <entry file="file://$PROJECT_DIR$/data_import.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="19" selection-start-column="19" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VRPNode.py">
+    <entry file="file://$PROJECT_DIR$/node.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
@@ -709,7 +707,7 @@
     <entry file="file://$PROJECT_DIR$/data/pr03.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/VRPNode.py">
+    <entry file="file://$PROJECT_DIR$/node.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
           <caret line="29" column="112" selection-start-line="29" selection-start-column="112" selection-end-line="29" selection-end-column="112" />
@@ -755,7 +753,7 @@
     <entry file="file://$PROJECT_DIR$/data/pr07.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/MDCPVRPSolution.py">
+    <entry file="file://$PROJECT_DIR$/genetic_MDPVRP.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret line="12" column="66" selection-start-line="12" selection-start-column="66" selection-end-line="12" selection-end-column="66" />
@@ -765,21 +763,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VRPRoute.py">
+    <entry file="file://$PROJECT_DIR$/data_import.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="170">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#1#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_parsing.py">
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/route.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
           <folding>
-            <element signature="e#1#26#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>

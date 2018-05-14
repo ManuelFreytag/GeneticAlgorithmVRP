@@ -1,10 +1,41 @@
-from VRPNode import Depot
-from VRPNode import Customer
+from node import Depot
+from node import Customer
 import os
+
+
+def binary_decoding(x):
+    hex_visit_comb = int(x)
+    str_binary_list = list("{0:b}".format(hex_visit_comb))
+    binary_list = [int(y) for y in str_binary_list]
+    return binary_list
 
 
 class Data:
     def __init__(self, dat_path):
+        """
+        Base constructor of the VRP data used in our solver
+
+        Args:
+            dat_path: Path to the data file in txt format
+
+        Class variables:
+            type:          Description of problem type to which the data belongs
+                            0 (VRP)
+                            1 (PVRP)
+                            2 (MDVRP)
+                            3 (SDVRP)
+                            4 (VRPTW)
+                            5 (PVRPTW)
+                            6 (MDVRPTW)
+                            7 (SDVRPTW)
+
+            nr_customers:   Number of customer nodes
+            customers:      Customer nodes from VRPNode class
+            nr_depots:      Number of depots
+            depots:         Depot nodes from VRPNode class
+
+        """
+
         dat_list = []
         with open(dat_path, "r") as file:
             for row in file:
@@ -22,7 +53,7 @@ class Data:
         self.nr_customers = int(prob_desc[2])
         self.nr_depots = int(prob_desc[3])
 
-        # 2) Depot description
+        # 2) DEPOT DESCRIPTION
         depots = []
         for i in range(self.nr_depots):
             depot_vehicle_info = dat_list.pop(0)
@@ -34,21 +65,17 @@ class Data:
             depots.append(tmp_depot)
         self.depots = depots
 
-        # 2) CUSTOMER DATA
-        # 2.1) parse customer data
+        # 3) CUSTOMER DATA
         customers = []
         for i in range(self.nr_customers):
             raw_customer_data = dat_list.pop(0)
-
             customer_data = raw_customer_data[:7]
 
             # for all visit combinations decode them into a binary array
             # NOTE: ALL OUR DATA IS CURRENTLY ONE PERIOD -> USELESS
             list_visit_comb = []
             for x in raw_customer_data[7:]:
-                hex_visit_comb = int(x)
-                str_binary_list = list("{0:b}".format(hex_visit_comb))
-                binary_list = [int(y) for y in str_binary_list]
+                binary_list = binary_decoding(x)
                 list_visit_comb.append(binary_list)
             customer_data.append(list_visit_comb)
 
