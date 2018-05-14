@@ -33,6 +33,7 @@ class Data:
             customers:      Customer nodes from VRPNode class
             nr_depots:      Number of depots
             depots:         Depot nodes from VRPNode class
+            nr_periods:       Number of periods
 
         """
 
@@ -49,9 +50,10 @@ class Data:
 
         # 1) PROBLEM DESCRIPTION
         prob_desc = dat_list.pop(0)
-        self.type = prob_desc[0]
+        self.type = int(prob_desc[0])
         self.nr_customers = int(prob_desc[2])
         self.nr_depots = int(prob_desc[3])
+        self.nr_periods = 1 # TODO: Remove hardcoding if necessary
 
         # 2) DEPOT DESCRIPTION
         depots = []
@@ -59,7 +61,7 @@ class Data:
             depot_vehicle_info = dat_list.pop(0)
             depot_location_info = dat_list.pop(-1)
 
-            tmp_depot = Depot(depot_location_info[0], depot_location_info[1], depot_location_info[2], int(prob_desc[1]),
+            tmp_depot = Depot(int(depot_location_info[0]), depot_location_info[1], depot_location_info[2], int(prob_desc[1]),
                               depot_vehicle_info[0], depot_vehicle_info[1])
 
             depots.append(tmp_depot)
@@ -70,6 +72,7 @@ class Data:
         for i in range(self.nr_customers):
             raw_customer_data = dat_list.pop(0)
             customer_data = raw_customer_data[:7]
+            customer_data[0] = int(customer_data[0]) # set ID as integer
 
             # for all visit combinations decode them into a binary array
             # NOTE: ALL OUR DATA IS CURRENTLY ONE PERIOD -> USELESS
@@ -77,7 +80,10 @@ class Data:
             for x in raw_customer_data[7:]:
                 binary_list = binary_decoding(x)
                 list_visit_comb.append(binary_list)
-            customer_data.append(list_visit_comb)
+            # As it is currently only one redundant representation only select the first
+            #customer_data.append(list_visit_comb)
+            # TODO: Make sure that the rep has euqal length all the time
+            customer_data.append([list_visit_comb[0]])
 
             customers.append(Customer(*customer_data))  # create new customer object based on given list
         self.customers = customers
