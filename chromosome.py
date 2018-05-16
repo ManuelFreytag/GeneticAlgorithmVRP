@@ -4,25 +4,24 @@ import random
 from data_import import Data
 
 
-def distance(start,stop):
+def get_sub_tour_length(distance_matrix, tour):
     """
-    Basic distance function for euclidean distance
+    TODO: Doc-string
 
     Args:
-        start: VRPNode as start
-        stop: VRPNode as stop
+        distance_matrix:
+        tour:
 
-    Returns: euclidean distance
+    Returns:
 
     """
 
-    x_dist = np.subtract(start.x, stop.x)
-    y_dist = np.subtract(start.y - stop.y)
+    for n_id in tour:
+        tour[] # NOTE ID starts at 1 ->
 
-    x_dist_square = np.square(x_dist)
-    y_dist_square = np.square(y_dist)
 
-    return np.sqrt(np.add(x_dist_square, y_dist_square))
+    # TODO: add the distance from the depot start and end
+    return length
 
 
 def random_chromosome(data):
@@ -56,10 +55,12 @@ def random_chromosome(data):
                 period_tour[d_id] += [c_id]
         gt_chromosome.append(period_tour)
 
-    return Chromosome(pattern_chromosome, depot_chromosome, gt_chromosome)
+    return Chromosome(data, pattern_chromosome, depot_chromosome, gt_chromosome)
+
 
 class Chromosome:
-    def __init__(self, pattern_chromosome, depot_chromosome, gt_chromosome, capacity=None, length=None, service_duration=None, fitness=None):
+    def __init__(self, data, pattern_chromosome, depot_chromosome, gt_chromosome, capacity=None, length=None, service_duration=None, fitness=None):
+        self.data = data
         self.pattern_chromosome = pattern_chromosome
         self.depot_chromosome = depot_chromosome
         self.gt_chromosome = gt_chromosome # a list of dictionaries
@@ -67,11 +68,26 @@ class Chromosome:
         self.length = length
         self.service_duration = service_duration
         self.fitness = fitness
+        self.feasibility = False
+
+
+    def set_length(self):
+        # for each depot / vehicle / periode check if it exceeds the limit
+        for periode in self.gt_chromosome:
+            length_list = {}
+            for d_id in periode:
+                get_sub_tour_length(self.data.distance_matrix, )
+                length_list.append()
+
+
+    def set_feasibility(self):
+
+        return
 
     def evaluate(self):
         """
         TODO:
-        
+
         Returns:
 
         """

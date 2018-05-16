@@ -7,6 +7,7 @@ class MDCPVRPSolution():
     def __init__(self,routes):
         self.population = []
 
+
     def random_population_initialization(self):
         #TODO
 

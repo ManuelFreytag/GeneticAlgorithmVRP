@@ -1,5 +1,7 @@
 from node import Depot
 from node import Customer
+from tools import distance
+import numpy as np
 import os
 
 
@@ -14,6 +16,8 @@ class Data:
     def __init__(self, dat_path):
         """
         Base constructor of the VRP data used in our solver
+        NOTE:   All ids set for all nodes are unique and start at 0.
+                The min(customer_id) is max(depot_id) +1
 
         Args:
             dat_path: Path to the data file in txt format
@@ -56,13 +60,17 @@ class Data:
         self.nr_periods = 1 # TODO: Remove hardcoding if necessary
 
         # 2) DEPOT DESCRIPTION
+        id_counter = 0 # set id counter for all current nodes
+
+
         depots = []
         for i in range(self.nr_depots):
             depot_vehicle_info = dat_list.pop(0)
             depot_location_info = dat_list.pop(-1)
 
-            tmp_depot = Depot(int(depot_location_info[0]), depot_location_info[1], depot_location_info[2], int(prob_desc[1]),
+            tmp_depot = Depot(id_counter, depot_location_info[1], depot_location_info[2], int(prob_desc[1]),
                               depot_vehicle_info[0], depot_vehicle_info[1])
+            id_counter += 1
 
             depots.append(tmp_depot)
         self.depots = depots
@@ -71,7 +79,9 @@ class Data:
         customers = []
         for i in range(self.nr_customers):
             raw_customer_data = dat_list.pop(0)
-            customer_data = raw_customer_data[:7]
+            customer_data = [id_counter]
+            id_counter += 1
+            customer_data += raw_customer_data[1:7]
             customer_data[0] = int(customer_data[0]) # set ID as integer
 
             # for all visit combinations decode them into a binary array
@@ -87,6 +97,28 @@ class Data:
 
             customers.append(Customer(*customer_data))  # create new customer object based on given list
         self.customers = customers
+
+        # 4) SET DISTANCE MATRIX OF ALL NODES (based on id)
+        self.distance_matrix = None
+        self.set_distance_matrix()
+
+    def set_distance_matrix(self):
+        """
+        Calculate the distance matrix of between all depots and customers with current sorting.
+        (Default: ids are increasing)
+        TODO:
+        """
+
+        # initialize distance matrix
+        m = self.nr_depots +self.nr_customers # get number dimensionality
+        distance_matrix = np.zeros((m,m))
+
+        # calculate the distance matrix for all values
+        for i,start in enumerate(self.depots + self.customers):
+            for j,stop in enumerate(self.depots + self.customers):
+                distance_matrix[i,j] = distance(start, stop)
+
+        self.distance_matrix = distance_matrix
 
 
 if __name__ == "__main__":
