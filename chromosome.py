@@ -6,22 +6,26 @@ from data_import import Data
 
 def get_sub_tour_length(distance_matrix, tour):
     """
-    TODO: Doc-string
+    Calculate the tour distance
 
     Args:
-        distance_matrix:
-        tour:
+        distance_matrix: distance matrix of all nodes
+        tour: Iterable with the depot on position 0
 
-    Returns:
+    Returns: tour distance of all nodes
 
     """
 
-    for n_id in tour:
-        tour[] # NOTE ID starts at 1 ->
+    tour_distance = 0
+    for i in range(1,len(tour)):
+        start = tour[i-1]
+        stop = tour[i]
+        tour_distance += distance_matrix[start,stop] # NODE ID starts at 1
 
+    # add the distance from the depot end to depot
+    distance_matrix[tour[-1],tour[0]]
 
-    # TODO: add the distance from the depot start and end
-    return length
+    return tour_distance
 
 
 def random_chromosome(data):
@@ -70,14 +74,24 @@ class Chromosome:
         self.fitness = fitness
         self.feasibility = False
 
-
     def set_length(self):
+        """
+        Calculate the distance for each route in the grand tour chromosome
+        Set the the values identical to the gt chromosome documentation
+        """
         # for each depot / vehicle / periode check if it exceeds the limit
-        for periode in self.gt_chromosome:
-            length_list = {}
-            for d_id in periode:
-                get_sub_tour_length(self.data.distance_matrix, )
-                length_list.append()
+        length_list = []
+        for tours_per_period in self.gt_chromosome:
+            length_dict_period = {}
+            for d_id in tours_per_period:
+                # add depot to start of route
+                tour = [d_id] + tours_per_period[d_id]
+                length = get_sub_tour_length(self.data.distance_matrix, tour)
+
+                # solution documentation
+                length_dict_period[d_id] = length
+            length_list.append(length_dict_period)
+        self.length = length_list
 
 
     def set_feasibility(self):
@@ -118,3 +132,4 @@ if __name__ == "__main__":
         path = cwd + "\\data\\pr01.txt"  # iterate through files
         data = Data(path)
         sol1 = random_chromosome(data)
+        sol1.set_length()
