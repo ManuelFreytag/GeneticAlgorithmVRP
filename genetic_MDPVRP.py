@@ -1,4 +1,4 @@
-import chromosome
+import individual
 import numpy as np
 
 

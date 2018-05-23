@@ -62,7 +62,6 @@ class Data:
         # 2) DEPOT DESCRIPTION
         id_counter = 0 # set id counter for all current nodes
 
-
         depots = []
         for i in range(self.nr_depots):
             depot_vehicle_info = dat_list.pop(0)
@@ -110,7 +109,7 @@ class Data:
         """
 
         # initialize distance matrix
-        m = self.nr_depots +self.nr_customers # get number dimensionality
+        m = self.nr_depots + self.nr_customers # get number dimensionality
         distance_matrix = np.zeros((m,m))
 
         # calculate the distance matrix for all values

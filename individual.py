@@ -41,32 +41,25 @@ def random_chromosome(data):
     customers = data.customers
     nr_periods = data.nr_periods
 
-    pattern_chromosome = {}
     depot_chromosome = {}
-    gt_chromosome = []
+    gt_chromosome = {x.n_id:[] for x in depots}
 
     # 1) select a random pattern and depot
     for c_node in customers:
-        pattern_chromosome[c_node.n_id] = random.choice(c_node.list_visit_comb)
         depot_chromosome[c_node.n_id] = random.choice(depots).n_id
 
     # 2) create the grand tour chromosome (list of dictionaries)
-    for p in range(nr_periods):
-        period_tour = {x.n_id:[] for x in depots}  # dictionary of empty lists for depot id
-        for c_id in depot_chromosome:  # fill the depot grand tour chromosome based on the previous random selection
-            d_id = depot_chromosome[c_id]
-            if pattern_chromosome[c_id][p] == 1:
-                period_tour[d_id] += [c_id]
-        gt_chromosome.append(period_tour)
+    for c_id in depot_chromosome:  # fill the depot grand tour chromosome based on the previous random selection
+        d_id = depot_chromosome[c_id]
+        gt_chromosome[d_id] += [c_id]
 
-    return Chromosome(data, pattern_chromosome, depot_chromosome, gt_chromosome)
+    return Individual(data, depot_chromosome, gt_chromosome)
 
 
-class Chromosome:
-    def __init__(self, data, pattern_chromosome, depot_chromosome, gt_chromosome, capacity=None, length=None, service_duration=None, fitness=None):
+class Individual:
+    def __init__(self, data, depot_chromosome, gt_chromosome, capacity=None, length=None, service_duration=None, fitness=None):
         self.data = data
         # CHROMOSOME
-        self.pattern_chromosome = pattern_chromosome
         self.depot_chromosome = depot_chromosome
         self.gt_chromosome = gt_chromosome # a list of dictionaries
 
@@ -83,19 +76,16 @@ class Chromosome:
         Set the the values identical to the gt chromosome documentation
         """
         # for each depot / vehicle / periode check if it exceeds the limit
-        length_list = []
-        for tours_per_period in self.gt_chromosome:
-            length_dict_period = {}
-            for d_id in tours_per_period:
-                # add depot to start of route
-                tour = [d_id] + tours_per_period[d_id]
-                length = get_sub_tour_length(self.data.distance_matrix, tour)
+        print(self.gt_chromosome)
+        length_list = {}
+        for d_id in self.gt_chromosome:
+            # add depot to start of route
+            tour = [d_id] + self.gt_chromosome[d_id]
+            length = get_sub_tour_length(self.data.distance_matrix, tour)
 
-                # solution documentation
-                length_dict_period[d_id] = length
-            length_list.append(length_dict_period)
+            # solution documentation
+            length_list[d_id] = length
         self.length = length_list
-
 
     def set_feasibility(self):
 
