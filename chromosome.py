@@ -65,9 +65,12 @@ def random_chromosome(data):
 class Chromosome:
     def __init__(self, data, pattern_chromosome, depot_chromosome, gt_chromosome, capacity=None, length=None, service_duration=None, fitness=None):
         self.data = data
+        # CHROMOSOME
         self.pattern_chromosome = pattern_chromosome
         self.depot_chromosome = depot_chromosome
         self.gt_chromosome = gt_chromosome # a list of dictionaries
+
+        # CHROMOSOME DESCRIPTION
         self.capacity = capacity
         self.length = length
         self.service_duration = service_duration
