@@ -3,6 +3,7 @@ from node import Customer
 from tools import distance
 import numpy as np
 import os
+# Priidik Push Test
 
 
 def binary_decoding(x):
@@ -51,16 +52,15 @@ class Data:
                 row_list = [float(x) for x in row_list if x is not ""]
                 dat_list.append(row_list)
 
-
         # 1) PROBLEM DESCRIPTION
         prob_desc = dat_list.pop(0)
         self.type = int(prob_desc[0])
         self.nr_customers = int(prob_desc[2])
         self.nr_depots = int(prob_desc[3])
-        self.nr_periods = 1 # TODO: Remove hardcoding if necessary
+        self.nr_periods = 1  # TODO: Remove hardcoding if necessary
 
         # 2) DEPOT DESCRIPTION
-        id_counter = 0 # set id counter for all current nodes
+        id_counter = 0  # set id counter for all current nodes
 
         depots = []
         for i in range(self.nr_depots):
@@ -81,7 +81,7 @@ class Data:
             customer_data = [id_counter]
             id_counter += 1
             customer_data += raw_customer_data[1:7]
-            customer_data[0] = int(customer_data[0]) # set ID as integer
+            customer_data[0] = int(customer_data[0])  # set ID as integer
 
             # for all visit combinations decode them into a binary array
             # NOTE: ALL OUR DATA IS CURRENTLY ONE PERIOD -> USELESS
@@ -90,11 +90,12 @@ class Data:
                 binary_list = binary_decoding(x)
                 list_visit_comb.append(binary_list)
             # As it is currently only one redundant representation only select the first
-            #customer_data.append(list_visit_comb)
+            # customer_data.append(list_visit_comb)
             # TODO: Make sure that the rep has euqal length all the time
             customer_data.append([list_visit_comb[0]])
 
-            customers.append(Customer(*customer_data))  # create new customer object based on given list
+            # create new customer object based on given list
+            customers.append(Customer(*customer_data))
         self.customers = customers
 
         # 4) SET DISTANCE MATRIX OF ALL NODES (based on id)
@@ -109,13 +110,13 @@ class Data:
         """
 
         # initialize distance matrix
-        m = self.nr_depots + self.nr_customers # get number dimensionality
-        distance_matrix = np.zeros((m,m))
+        m = self.nr_depots + self.nr_customers  # get number dimensionality
+        distance_matrix = np.zeros((m, m))
 
         # calculate the distance matrix for all values
-        for i,start in enumerate(self.depots + self.customers):
-            for j,stop in enumerate(self.depots + self.customers):
-                distance_matrix[i,j] = distance(start, stop)
+        for i, start in enumerate(self.depots + self.customers):
+            for j, stop in enumerate(self.depots + self.customers):
+                distance_matrix[i, j] = distance(start, stop)
 
         self.distance_matrix = distance_matrix
 
